@@ -1,7 +1,7 @@
 # Teste de Desenvolvimento Frontend: Aplicativo de Piadas do Chuck Norris
 
 ## Objetivo do Teste
-Desenvolver uma aplicação web em React com TypeScript que exiba piadas aleatórias do Chuck Norris. Para desenvolvedores fullstack, conectar com a API criada no teste backend. Para desenvolvedores frontend, coletar e utilizar um array de piadas da  API do Chuck Norris, vide: `https://api.chucknorris.io/jokes/search?query=ALGUM TERMO DE PREFERENCIA)` .
+Desenvolver uma aplicação web em React com TypeScript que exiba piadas aleatórias do Chuck Norris. Para desenvolvedores fullstack, conectar com a API criada no teste backend. Para desenvolvedores frontend, coletar e utilizar um array de piadas da  API do Chuck Norris, vide: `https://api.chucknorris.io/jokes/search?query=ALGUM TERMO DE PREFERENCIA` .
 
 ## Descrição do Teste
 1. **Para Desenvolvedores Fullstack:**
