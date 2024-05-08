@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Joke from './Joke'
 import './styles.css'
 import { getJokeAndImage } from './api'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const SwalAlert = withReactContent(Swal)
 
 const App = () => {
   const [joke, setJoke] = useState('')
@@ -9,19 +13,35 @@ const App = () => {
   const [url, setUrl] = useState('')
 
   useEffect(() => {
-    getJokeAndImage().then(({ joke, image, url }) => {
-      setJoke(joke)
-      setImage(image)
-      setUrl(url)
-    })
+    getJokeAndImage()
+      .then(({ joke, image, url }) => {
+        setJoke(joke)
+        setImage(image)
+        setUrl(url)
+      })
+      .catch((error) => {
+        SwalAlert.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message,
+        })
+      })
   }, [])
 
   const handleGetJoke = () => {
-    getJokeAndImage().then(({ joke, image, url }) => {
-      setJoke(joke)
-      setImage(image)
-      setUrl(url)
-    })
+    getJokeAndImage()
+      .then(({ joke, image, url }) => {
+        setJoke(joke)
+        setImage(image)
+        setUrl(url)
+      })
+      .catch((error) => {
+        SwalAlert.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message,
+        })
+      })
   }
 
   return (
