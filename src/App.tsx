@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import { getRandomJoke } from "./api/requests";
 import { AppContainer } from "./components/AppContainer";
 import { Button } from "./components/Button";
 import { Header } from "./components/Header";
 import JokeBalloon from "./components/JokeBalloon";
 import { PageTitle } from "./components/PageTitle";
-import { useRequest } from "./hooks/useRequest";
+import { useGetRequest } from "./hooks/useRequest";
+import { JokeResponseDto } from "./types/JokeResponseDto";
 
 function App() {
-  const { data, execute, isLoading } = useRequest(getRandomJoke);
+  const { data, execute, isLoading } =
+    useGetRequest<JokeResponseDto>("random-joke");
 
   useEffect(() => {
     execute();
@@ -20,11 +21,9 @@ function App() {
         <PageTitle>CHUCK NORRIS JOKES</PageTitle>
       </Header>
       <JokeBalloon isLoading={isLoading} joke={data?.joke} />
-      <div>
-        <Button onClick={execute} disabled={isLoading}>
-          Show me some joke!
-        </Button>
-      </div>
+      <Button onClick={execute} disabled={isLoading}>
+        Show me another joke!
+      </Button>
     </AppContainer>
   );
 }

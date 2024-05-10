@@ -7,7 +7,7 @@ export const AppContainer = styled.div`
   justify-content: flex-start;
   background-color: black;
   color: white;
-  gap: 16px;
+  gap: 32px;
   height: 100vh;
   width: 100vw;
 `;
