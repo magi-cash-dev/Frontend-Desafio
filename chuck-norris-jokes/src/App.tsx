@@ -6,12 +6,15 @@ import './styles/App.css';
 const App: React.FC = () => {
   const [joke, setJoke] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const fetchJoke = async () => {
+    setIsLoading(true);
+    setError('');
     try {
       const response = await axios.get('http://localhost:3000/random-joke');
       setJoke(response.data.value);
-      setError('');
+      setIsLoading(false);
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
         setError(`Erro ${err.response.status}: ${err.response.data.error}`);
@@ -19,6 +22,7 @@ const App: React.FC = () => {
         setError('Falha ao buscar piada. Por favor, tente novamente mais tarde.');
       }
       setJoke('');
+      setIsLoading(false);
     }
   };
 
@@ -26,7 +30,11 @@ const App: React.FC = () => {
     <div className="App">
       <JokeDisplay joke={joke} />
       {error && <p className="error">{error}</p>}
-      <button onClick={fetchJoke}>Buscar Outra Piada</button>
+      {isLoading ? (
+        <div className="spinner"></div>
+      ) : (
+        <button onClick={fetchJoke}>Buscar Outra Piada</button>
+      )}
     </div>
   );
 };
