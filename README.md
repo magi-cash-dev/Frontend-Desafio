@@ -26,3 +26,19 @@ Desenvolver uma aplicação web em React com TypeScript que exiba piadas aleató
 
 ## Nota para o Candidato
 - Este teste visa avaliar habilidades básicas de desenvolvimento web e, para fullstack, a integração entre as camadas de frontend e backend.
+
+## Como executar
+- Instalar dependencias
+```bash
+npm install
+```
+
+- Desenvolvimento
+```bash
+npm run dev
+```
+
+- Build
+```bash
+npm run build
+```
